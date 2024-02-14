@@ -1,8 +1,8 @@
 import { View, Text, StyleSheet, Button } from "react-native";
-export default function MainPage(){
+export default function MainAccountPage(){
     return (
         <View style={styles.container}>
-          <Text style={styles.text}> MainPage </Text> 
+          <Text style={styles.text}> MainAccountPage </Text> 
         </View>
     )
 }
