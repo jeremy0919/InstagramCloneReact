@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, Button } from "react-native";
-export default function scrollPage(){
+export default function ScrollPage(){
     return (
         <View style={styles.container}>
           <Text style={styles.text}> scrollPage </Text> 
