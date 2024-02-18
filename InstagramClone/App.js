@@ -2,7 +2,7 @@ import React from 'react';
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import MainPage from "./Components/MainPage/MainPage";
-import ScrollPage from "./Components/SearchPage/ScrollPage";
+import ScrollPage from './Components/SearchPage/ScrollPage';
 import AddPhoto from "./Components/UploadImage/AddPhoto";
 import ReelView from "./Components/Reels/ReelView";
 import MainAccountPage from "./Components/AccountPage/MainAccountPage";

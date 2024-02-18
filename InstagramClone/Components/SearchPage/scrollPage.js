@@ -1,22 +1,26 @@
-import { View, Text, StyleSheet, Button } from "react-native";
-export default function ScrollPage(){
-    return (
-        <View style={styles.container}>
-          <Text style={styles.text}> scrollPage </Text> 
-        </View>
-    )
+import React from 'react';
+import { View, StyleSheet, ScrollView } from 'react-native';
+import ScrollPageBlock from './ScrollFeedBlock';
+import ScrollPageBlockRev from './ScrollFeedBlockRev';
+
+export default function ScrollPage() {
+  return (
+    <ScrollView style={styles.container}>
+      <ScrollPageBlock style={{ backgroundColor: "#111", }} />
+      <ScrollPageBlockRev style={{ backgroundColor: "#111", }} />
+      <ScrollPageBlock style={{ backgroundColor: "#111", }} />
+      <ScrollPageBlockRev style={{ backgroundColor: "#111", }} />
+      <ScrollPageBlock style={{ backgroundColor: "#111", }} />
+      <ScrollPageBlockRev style={{ backgroundColor: "#111", }} />
+      <ScrollPageBlock style={{ backgroundColor: "#111", }} />
+      <ScrollPageBlockRev style={{ backgroundColor: "#111", }} />
+      <ScrollPageBlock style={{ backgroundColor: "#111", }} />
+    </ScrollView>
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: "center",
-        justifyContent:"center"
-    },
-    text:{
-        fontSize: 24,
-        fontWeight: "bold",
-        marginBottom: 16,
-    },
-
-})
+  container: {
+    flex: 1,
+  },
+});
