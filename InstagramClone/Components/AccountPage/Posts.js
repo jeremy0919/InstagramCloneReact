@@ -1,22 +1,52 @@
-import { View, Text, StyleSheet, Button } from "react-native";
-export default function Posts(){
+import React from 'react';
+import { View, StyleSheet, Image, Dimensions } from 'react-native';
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
+
+export default function Posts() {
     return (
         <View style={styles.container}>
-          <Text style={styles.text}> Posts </Text> 
+         
+            <View style={styles.leftBox}>
+                <View style={styles.imageContainer}>
+                    <Image source={{ uri: 'https://picsum.photos/200' }} style={[styles.image, { height: (windowHeight * 0.2) }]} />
+                    <Image source={{ uri: 'https://picsum.photos/200' }} style={[styles.image, { height: (windowHeight * 0.2) }]} />
+                </View>
+                <View style={styles.imageContainer}>
+                    <Image source={{ uri: 'https://picsum.photos/200' }} style={[styles.image, { height: (windowHeight * 0.2) }]} />
+                    <Image source={{ uri: 'https://picsum.photos/200' }} style={[styles.image, { height: (windowHeight * 0.2) }]} />
+                </View>
+            </View>
+            <View style={styles.rightBox}>
+                <Image source={{ uri: 'https://picsum.photos/200' }} style={[styles.image, { height: windowHeight * 0.4 , width:"auto"}]} />
+            </View>
         </View>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
     container: {
+        flexDirection: 'row',
         flex: 1,
-        alignItems: "center",
-        justifyContent:"center"
     },
-    text:{
-        fontSize: 24,
-        fontWeight: "bold",
-        marginBottom: 16,
+    leftBox: {
+        flex: 2,
+        backgroundColor: 'blue',
+        padding: 3,
     },
-
-})
+    rightBox: {
+        flex: 1,
+        backgroundColor: 'green',
+        padding: 3,
+    },
+    imageContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginBottom: 2,
+    },
+    image: {
+        width: '50%',
+        backgroundColor: 'yellow',
+    },
+});
