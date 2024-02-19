@@ -1,5 +1,6 @@
-import { View, Text, StyleSheet, Button, ScrollView } from "react-native";
+import { View, Text, StyleSheet, Button, ScrollView, StatusBar } from "react-native";
 import Feed from "./feed";
+import MainPageTopBar from "./MainPageTopBar";
 
 
 export default function MainPage(){
@@ -29,8 +30,11 @@ export default function MainPage(){
         Comments: ["Phi"]
       };
     return (
+
         <View style={styles.container}>
+
           <ScrollView>
+            <MainPageTopBar/>
           <Feed {...temmpUser1}/>
           <Feed {...temmpUser2}/>
           <Feed {...temmpUser3}/>
@@ -46,5 +50,8 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         marginBottom: 16,
     },
+    container:{
+      paddingTop: StatusBar.currentHeight
+    }
 
 })

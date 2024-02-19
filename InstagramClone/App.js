@@ -3,9 +3,10 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import MainPage from "./Components/MainPage/MainPage";
 import ScrollPage from './Components/SearchPage/ScrollPage';
-import AddPhoto from "./Components/UploadImage/AddPhoto";
+import UploadImageMain from './Components/UploadImage/UploadImageMain';
 import ReelView from "./Components/Reels/ReelView";
 import MainAccountPage from "./Components/AccountPage/MainAccountPage";
+import MainPageTopBar from './Components/MainPage/MainPageTopBar';
 
 const Tab = createBottomTabNavigator();
 
@@ -14,19 +15,22 @@ export default function App() {
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={{
+      
           style: { backgroundColor: 'black' }, // Set the background color here
           tabBarLabelStyle: { color: 'black' } // Set the text color here
         }}
       >
-        <Tab.Screen name="Pass in top bar here if possible" component={MainPage}/>
-        <Tab.Screen name="Search" component={ScrollPage} />
-        <Tab.Screen name="Add Photo" component={AddPhoto}/>
+      <Tab.Screen name="MainPageTopBar" component={MainPage}   options={{ headerShown: false }}/>
+
+        <Tab.Screen name="Search" component={ScrollPage}   options={{ headerShown: false }}/>
+        <Tab.Screen name="Add Photo" component={UploadImageMain}/>
         <Tab.Screen name="Reels" component={ReelView} s/>
         <Tab.Screen name="Account Page" component={MainAccountPage}/>
       </Tab.Navigator>
     </NavigationContainer>
   );
 }
+
 
 
 /*  const randomWidth = useSharedValue(10);

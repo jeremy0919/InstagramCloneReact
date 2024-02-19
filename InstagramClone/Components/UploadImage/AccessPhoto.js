@@ -1,8 +1,13 @@
-import { View, Text, StyleSheet, Button } from "react-native";
+import { View, Text, StyleSheet, Button, Image, ScrollView, Dimensions } from "react-native";
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 export default function AccessPhotos(){
     return (
         <View style={styles.container}>
-          <Text style={styles.text}> AccessPhotos </Text> 
+            <ScrollView>
+         
+          <Image source={{ uri: 'https://picsum.photos/200' }} style={[styles.image, { height: (windowHeight * 0.8), width: windowWidth*.7}]} />
+          </ScrollView>
         </View>
     )
 }
