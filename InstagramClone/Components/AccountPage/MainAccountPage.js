@@ -1,18 +1,37 @@
 import { View, Text, StyleSheet, Button, ScrollView } from "react-native";
 import Posts from "./Posts";
 import AccountPostBar from "./AccountPostBar";
+import StoryBar from "./StoryBar";
+import Buttons from "./Buttons";
+import AccountBio from "./AccountBio";
+import TopBar from "./TopBar";
+
 export default function MainAccountPage(){
     return (
-        <View style={styles.container}>
-            <View style={styles.header}>
-                <Text style={styles.text}> MainAccountPage </Text> 
-                <AccountPostBar></AccountPostBar>
+    
+              <ScrollView style={styles.scrollView}>
+            <View style={styles.TopBar}>
+                    <TopBar/>
+                    
             </View>
-            <ScrollView style={styles.scrollView}>
+            <View  style={styles.AccountBio}>
+                    <AccountBio/>
+            </View>
+            <View  style={styles.Buttons}>
+                    <Buttons/>
+            </View>
+            <View  style={styles.StoryBar}>
+               <StoryBar/>
+               
+            </View>
+
+            <View  style={styles.Posts}>
+            <AccountPostBar></AccountPostBar>
                 <Posts></Posts>
                 <Posts></Posts>
+            </View>
             </ScrollView>
-        </View>
+    
     );
 }
 
@@ -21,10 +40,38 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: "center",
         justifyContent: "center",
+        flexDirection: 'column',
     },
-    header: {
-        marginBottom: 50,
-        flex:1
+    TopBar: {
+        flex: 2, // 20% of the page
+        width: '100%', 
+        borderColor:"blue",
+        borderRadius: 3,
+    },
+    StoryBar:{
+        flex: 2, // 20% of the page
+        width: '100%',
+        borderColor:"red",
+        borderRadius: 3,
+    },
+    Posts:{
+        flex: 2, // 20% of the page
+        width: '100%',
+        borderColor:"red",
+        borderRadius: 3,
+      
+    },
+    AccountBio:{
+        flex: 2, // 20% of the page
+        width: '100%',
+        borderColor:"green",
+        borderRadius: 3,
+    },
+    Buttons:{
+        flex: 2, // 20% of the page
+        width: '100%',
+        borderColor:"purple",
+        borderRadius: 3,
     },
     text: {
         fontSize: 24,
@@ -33,6 +80,5 @@ const styles = StyleSheet.create({
     scrollView: {
         flex: 1,
         width: "100%",
-        alignSelf: "flex-end", // Align to the bottom of the container
     },
 });

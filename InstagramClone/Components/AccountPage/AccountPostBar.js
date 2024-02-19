@@ -3,13 +3,11 @@ export default function AccountPostBar(){
     return (
         <View style={styles.container}>
             <View style={styles.containerL}>
-         <Button title="Like"></Button> 
-         <Button title="comment"></Button>
-         <Button title="share"></Button>
+         <Button title="Posts"></Button> 
+         <Button title="Reels"></Button>
+         <Button title="Tagged"></Button>
          </View>
-         <View style={styles.containerR}>
-         <Button title="bookmark"></Button>
-         </View>
+    
         </View>
     )
 }
@@ -17,14 +15,15 @@ export default function AccountPostBar(){
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        flexDirection:"row"
-        
+
+        padding:30
     },
     containerL: {
         flex: 1,
         alignItems:"flex-start",
         flexDirection: "row",
-        justifyContent:"flex-start"
+        justifyContent:"space-between",
+        
     },
     containerR: {
         flex: 1,
@@ -35,7 +34,7 @@ const styles = StyleSheet.create({
     text:{
         fontSize: 24,
         fontWeight: "bold",
-        marginBottom: 16,
+      
     },
     badge:{ // can be used for instagram badge start
         flexDirection: "row",

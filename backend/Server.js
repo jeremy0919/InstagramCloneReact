@@ -7,19 +7,27 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 app.use(bodyParser.json());
 
-// Routes
-app.get('/GetUser', (req, res) => {
-  // Read account data from JSON file
-  fs.readFile('Users.json', 'utf8', (err, data) => {
-    if (err) {
-      console.error(err);
-      res.status(500).send('Error reading accounts data');
-      return;
+// Pretty much each user has information and a GUID and each user has a friends list of users GUIDS
+// each image has the user who posted its GUID and its own unique GUID
+// algorithm, only show images of people who are on your friends list in home screen 
+// can I even store images in a json? am I storing paths to images? 
+app.post('/GetUser', async (req, res) => { 
+  try {
+    const data = fs.readFile('Users.json', 'utf8');
+    const USERS = JSON.parse(data);
+    const { GUID } = req.body.obj;
+    console.log(GUID)
+    const foundAccount = USERS.find(user => user.GUID === GUID);
+    if (foundAccount) {
+      return res.status(200).json(foundAccount);
+    } else {
+      return res.status(404).json({ error: 'User not found' });
     }
-    res.json(JSON.parse(data));
-  });
+  } catch (error) {
+    console.error('Error reading users file:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
 });
-
 app.post('/NewUser', (req, res) => {
   // Append new account to JSON file
   const newAccount = req.body;
@@ -63,18 +71,23 @@ app.post('/NewImage', (req, res) => {
     });
   });
 });
-app.get('/GetImage', (req, res) => {
-  // Read account data from JSON file
-  fs.readFile('Images.json', 'utf8', (err, data) => {
-    if (err) {
-      console.error(err);
-      res.status(500).send('Error reading accounts data');
-      return;
+app.post('/GetImage', async (req, res) => { 
+  try {
+    const data = fs.readFile('Image.json', 'utf8');
+    const Images = JSON.parse(data);
+    const { GUID } = req.body.obj;
+    console.log(GUID)
+    const FoundImage = Images.find(image => image.GUID === GUID);
+    if (FoundImage) {
+      return res.status(200).json(FoundImage);
+    } else {
+      return res.status(404).json({ error: 'User not found' });
     }
-    res.json(JSON.parse(data));
-  });
+  } catch (error) {
+    console.error('Error reading users file:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
 });
-
 // Start server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
