@@ -24,7 +24,7 @@ export default function App() {
 
         <Tab.Screen name="Search" component={ScrollPage}   options={{ headerShown: false }}/>
         <Tab.Screen name="Add Photo" component={UploadImageMain}/>
-        <Tab.Screen name="Reels" component={ReelView} s/>
+        <Tab.Screen name="Reels" component={ReelView} />
         <Tab.Screen name="Account Page" component={MainAccountPage}/>
       </Tab.Navigator>
     </NavigationContainer>
