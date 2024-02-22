@@ -34,7 +34,6 @@ export default function MainPage(){
         <View style={styles.container}>
 
           <ScrollView>
-            <MainPageTopBar/>
           <Feed {...temmpUser1}/>
           <Feed {...temmpUser2}/>
           <Feed {...temmpUser3}/>
@@ -51,7 +50,7 @@ const styles = StyleSheet.create({
         marginBottom: 16,
     },
     container:{
-      paddingTop: StatusBar.currentHeight
+     // paddingTop: StatusBar.currentHeight
     }
 
 })

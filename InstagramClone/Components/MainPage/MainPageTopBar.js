@@ -1,11 +1,13 @@
 import React from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 import MessagePage from './Messages/MessagePage';
 
-export default function MainPageTopBar() {
-  const Stack = createNativeStackNavigator();
-
+const stack = createNativeStackNavigator()
+const Tab = createMaterialTopTabNavigator();
+export default function MainPageTopBar({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.containerL}>
@@ -13,39 +15,10 @@ export default function MainPageTopBar() {
       </View>
 
       <View style={styles.containerR}>
-        <Button title="button"></Button>
-        <Stack.Navigator initialRouteName="MessagePage">
-          <Stack.Screen
-            name="Likes"
-            component={MessagePage}
-            options={{
-              headerRight: () => (
-                <Button
-                  title="Go to Likes"
-                  onPress={() => {
-                    // Navigate to the Likes screen
-                    // You can customize this logic as needed
-                  }}
-                />
-              ),
-            }}
-          />
-          <Stack.Screen
-            name="Messages"
-            component={MessagePage}
-            options={{
-              headerRight: () => (
-                <Button
-                  title="Go to Messages"
-                  onPress={() => {
-                    // Navigate to the Messages screen
-                    // You can customize this logic as needed
-                  }}
-                />
-              ),
-            }}
-          />
-        </Stack.Navigator>
+        <Tab.Navigator initialRouteName="Likes">
+          <Tab.Screen name="Likes" component={MessagePage} />
+          <Tab.Screen name="Messages" component={MessagePage} />
+        </Tab.Navigator>
       </View>
     </View>
   );

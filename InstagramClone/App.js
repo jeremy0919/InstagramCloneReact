@@ -1,4 +1,5 @@
 import React from 'react';
+import { StatusBar, View } from 'react-native';
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import MainPage from "./Components/MainPage/MainPage";
@@ -6,34 +7,46 @@ import ScrollPage from './Components/SearchPage/ScrollPage';
 import UploadImageMain from './Components/UploadImage/UploadImageMain';
 import ReelView from "./Components/Reels/ReelView";
 import MainAccountPage from "./Components/AccountPage/MainAccountPage";
-import MainPageTopBar from './Components/MainPage/MainPageTopBar';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import MessagePage from './Components/MainPage/Messages/MessagePage';
 
+const TopTab = createMaterialTopTabNavigator();
 const Tab = createBottomTabNavigator();
 
-export default function App() {
+function TopTabNavigator() {
   return (
-    <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={{
-      
-          style: { backgroundColor: 'black' }, // Set the background color here
-          tabBarLabelStyle: { color: 'black' } // Set the text color here
-        }}
-      >
-      <Tab.Screen name="MainPageTopBar" component={MainPage}   options={{ headerShown: false }}/>
-
-        <Tab.Screen name="Search" component={ScrollPage}   options={{ headerShown: false }}/>
-        <Tab.Screen name="Add Photo" component={UploadImageMain}/>
-        <Tab.Screen name="Reels" component={ReelView} />
-        <Tab.Screen name="Account Page" component={MainAccountPage}/>
-      </Tab.Navigator>
-    </NavigationContainer>
+    <TopTab.Navigator initialRouteName="Feed">
+      <TopTab.Screen name="Feed" component={MainPage} />
+      <TopTab.Screen name="Likes" component={MessagePage} />
+      <TopTab.Screen name="Messages" component={MessagePage} />
+    </TopTab.Navigator>
   );
 }
 
+export default function App() {
+  return (
+    <View style={{ flex: 1, paddingTop: StatusBar.currentHeight }}>
+      <StatusBar backgroundColor="transparent" translucent />
+      <NavigationContainer>
+        <Tab.Navigator
+          screenOptions={{
+            style: { backgroundColor: 'black' },
+            tabBarLabelStyle: { color: 'black' },
+          }}
+ 
+        >
+          <Tab.Screen name="MainPage" component={TopTabNavigator} options={{ headerShown: false }} />
+          <Tab.Screen name="Search" component={ScrollPage} options={{ headerShown: false }} />
+          <Tab.Screen name="Add Photo" component={UploadImageMain} />
+          <Tab.Screen name="Reels" component={ReelView} />
+          <Tab.Screen name="Account Page" component={MainAccountPage} />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </View>
+  );
+}
 
-
-/*  const randomWidth = useSharedValue(10);
+/*  const randomWidth = useSharedValue(10);r
 import Animated, {
   useSharedValue,
   withTiming,
