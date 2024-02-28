@@ -1,21 +1,25 @@
 import React from 'react';
-import { StatusBar, View } from 'react-native';
+
 import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import MainPage from "./Components/MainPage/MainPage";
-import ScrollPage from './Components/SearchPage/ScrollPage';
-import UploadImageMain from './Components/UploadImage/UploadImageMain';
-import ReelView from "./Components/Reels/ReelView";
-import MainAccountPage from "./Components/AccountPage/MainAccountPage";
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import MessagePage from './Components/MainPage/Messages/MessagePage';
-import UserName from './Components/SignUp/UserName';
+
 import NotSignedIn from './Components/ContentHolder/NotSignedIn';
+import SignedIn from './Components/ContentHolder/NotSignedIn';
+import { AuthProvider } from './Components/Context/IsSignedIn';
 export default function App() {
   return (
-    <UserName/>
+    <AuthProvider>
+      <NavigationContainer>
+        <AuthConsumer />
+      </NavigationContainer>
+    </AuthProvider>
   );
 }
+
+const AuthConsumer = () => {
+  const { isSignedIn } = useContext(AuthContext);
+
+  return isSignedIn ? <SignedIn /> : <NotSignedIn />;
+};
 
 /*  const randomWidth = useSharedValue(10);r
 import Animated, {

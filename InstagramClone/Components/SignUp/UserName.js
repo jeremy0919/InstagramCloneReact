@@ -1,16 +1,21 @@
 import React, {useState} from 'react';
 import { View, Text, StyleSheet, Button, Image, TextInput } from 'react-native';
 import newUser from '../network/NewUser';
-export default function UserName() {
+export default function UserName({navigation}) {
     const [userName, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     const submit = () =>{
         newUser(userName, password)
     }
-
+    const handleSignUpPress = () => {
+      // Navigate to the sign-up page
+      navigation.navigate('SignUp');
+    };
+  
   return (
     <View style={styles.container}>
+      <Button title="X" onPress={handleSignUpPress}></Button>
       <Text style={styles.logo}>Create Username</Text>
 
  
