@@ -1,17 +1,22 @@
+import React from "react";
 import { View, Text, StyleSheet, Button } from "react-native";
-export default function AccountPostBar(){
+import GetUser from "../network/GetUser";
+
+export default function AccountPostBar() {
+    const handlePostsButtonPress = () => {
+        GetUser(); // Call the newUser function when the button is pressed
+    };
+
     return (
         <View style={styles.container}>
             <View style={styles.containerL}>
-         <Button title="Posts"></Button> 
-         <Button title="Reels"></Button>
-         <Button title="Tagged"></Button>
-         </View>
-    
+                <Button title="Posts" onPress={handlePostsButtonPress} />
+                <Button title="Reels" />
+                <Button title="Tagged" />
+            </View>
         </View>
-    )
+    );
 }
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,

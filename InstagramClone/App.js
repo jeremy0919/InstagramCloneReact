@@ -9,40 +9,11 @@ import ReelView from "./Components/Reels/ReelView";
 import MainAccountPage from "./Components/AccountPage/MainAccountPage";
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import MessagePage from './Components/MainPage/Messages/MessagePage';
-
-const TopTab = createMaterialTopTabNavigator();
-const Tab = createBottomTabNavigator();
-
-function TopTabNavigator() {
-  return (
-    <TopTab.Navigator initialRouteName="Feed">
-      <TopTab.Screen name="Feed" component={MainPage} />
-      <TopTab.Screen name="Likes" component={MessagePage} />
-      <TopTab.Screen name="Messages" component={MessagePage} />
-    </TopTab.Navigator>
-  );
-}
-
+import UserName from './Components/SignUp/UserName';
+import NotSignedIn from './Components/ContentHolder/NotSignedIn';
 export default function App() {
   return (
-    <View style={{ flex: 1, paddingTop: StatusBar.currentHeight }}>
-      <StatusBar backgroundColor="transparent" translucent />
-      <NavigationContainer>
-        <Tab.Navigator
-          screenOptions={{
-            style: { backgroundColor: 'black' },
-            tabBarLabelStyle: { color: 'black' },
-          }}
- 
-        >
-          <Tab.Screen name="MainPage" component={TopTabNavigator} options={{ headerShown: false }} />
-          <Tab.Screen name="Search" component={ScrollPage} options={{ headerShown: false }} />
-          <Tab.Screen name="Add Photo" component={UploadImageMain} />
-          <Tab.Screen name="Reels" component={ReelView} />
-          <Tab.Screen name="Account Page" component={MainAccountPage} />
-        </Tab.Navigator>
-      </NavigationContainer>
-    </View>
+    <UserName/>
   );
 }
 
