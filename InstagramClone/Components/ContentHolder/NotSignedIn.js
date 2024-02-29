@@ -1,7 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet, Button, TouchableOpacity, TextInput } from 'react-native';
-
+import { AuthContext } from '../Context/IsSignedIn';
 const LogIn = ({ navigation }) => {
+  const [isSignedIn, setIsSignedIn] = AuthContext();
   const handleSignUpPress = () => {
     // Navigate to the sign-up page
     navigation.navigate('SignUp');
@@ -20,7 +21,7 @@ const LogIn = ({ navigation }) => {
       </View>
 
       <View style={styles.inputContainer}>
-        <Button title='Log in'/>
+        <Button title='Log in' onPress={() => setIsSignedIn(true)}/>
       </View>
 
       <View style={styles.inputContainer2}>
