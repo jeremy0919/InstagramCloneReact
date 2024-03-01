@@ -1,10 +1,10 @@
-import React from 'react';
-
+import React, { useContext } from 'react';
 import { NavigationContainer } from "@react-navigation/native";
+import { AuthProvider, AuthContext } from './Components/Context/IsSignedIn'; // Import AuthContext
 
-import NotSignedIn from './Components/ContentHolder/NotSignedIn';
-import SignedIn from './Components/ContentHolder/NotSignedIn';
-import { AuthProvider } from './Components/Context/IsSignedIn';
+import LogIn from './Components/ContentHolder/NotSignedIn';
+import SignedIn from './Components/ContentHolder/SignedIn';
+
 export default function App() {
   return (
     <AuthProvider>
@@ -18,8 +18,9 @@ export default function App() {
 const AuthConsumer = () => {
   const { isSignedIn } = useContext(AuthContext);
 
-  return isSignedIn ? <SignedIn /> : <NotSignedIn />;
+  return isSignedIn ? <SignedIn  /> : <LogIn />;
 };
+
 
 /*  const randomWidth = useSharedValue(10);r
 import Animated, {

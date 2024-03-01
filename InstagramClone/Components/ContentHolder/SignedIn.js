@@ -1,6 +1,5 @@
 import React from 'react';
 import { StatusBar, View } from 'react-native';
-import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import MainPage from '../MainPage/MainPage';
 import ScrollPage from '../SearchPage/ScrollPage';
@@ -27,7 +26,6 @@ export default function SignedIn() {
   return (
     <View style={{ flex: 1, paddingTop: StatusBar.currentHeight }}>
       <StatusBar backgroundColor="transparent" translucent />
-      <NavigationContainer>
         <Tab.Navigator
           screenOptions={{
             style: { backgroundColor: 'black' },
@@ -41,7 +39,6 @@ export default function SignedIn() {
           <Tab.Screen name="Reels" component={ReelView} />
           <Tab.Screen name="Account Page" component={MainAccountPage} />
         </Tab.Navigator>
-      </NavigationContainer>
     </View>
   );
 }
