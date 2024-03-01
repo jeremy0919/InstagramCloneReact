@@ -6,12 +6,12 @@ export default function TopBar(){
     const followernum = 15;
     const followingnum = 25;
 // might need buttons in their own container but a good spot for now 
-    const profilePic =  ImageComponent('Image1.png')
-    console.log(profilePic)
+ //   const profilePic =  ImageComponent('Image1.png')
+   // console.log(profilePic)
     return (
         <View style={styles.container}>
             <View style={styles.containerL}>
-                <Image source={{ uri: `${profilePic}`}} style={[styles.image, { height: (windowHeight * 0.1) }]} /> 
+                <Image source={{ uri: `https://picsum.photos/200`}} style={[styles.image, { height: (windowHeight * 0.1) }]} /> 
                 <Button title={`${postnum}\nPosts`} style={styles.button} /> 
                 <Button title={`${followernum}\nFollowers`} style={styles.button} />
                 <Button title={`${followingnum}\nFollowing`} style={[styles.button, { width: '20%' }]} />
