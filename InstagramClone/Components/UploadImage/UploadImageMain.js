@@ -1,11 +1,13 @@
 import { View, Text, StyleSheet, Button, ScrollView } from "react-native";
 import PhotoLibrary from "./PhotoLibrary";
 import AccessPhotos from "./AccessPhoto";
+import AddPhoto from "./AddPhoto";
+import Test from "./Test";
 export default function UploadImageMain(){
     return (
         <View style={styles.container}>
             <View style={styles.flexBox}> 
-                <AccessPhotos/>
+                <Test/>
             </View>
          
       

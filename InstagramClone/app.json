@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "InstagramClone",
-    "slug": "InstagramClone"
+    "slug": "InstagramClone",
+    "plugins": ["expo-image-picker"]
   }
 }
