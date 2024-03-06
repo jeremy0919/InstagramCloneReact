@@ -31,29 +31,55 @@ const convertImageToBuffer = async (imageUri) => {
 };
 
 
-const uploadImage = async (imageUri) => {
-  console.log("in Upload Image")
-  console.log( imageUri)
+async function uploadImage(image) {
   try {
-    const imageData = await convertImageToBuffer(imageUri);
-    console.log( imageData)
-    console.log(decode(imageData))
-    const { data, error } = await supabase.storage
-      .from('images')
-      .upload('public/avatar1.png', imageData, {
-        contentType: 'image/png'
+    /*
+    setUploading(true)
+
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images, // Restrict to only images
+      allowsMultipleSelection: false, // Can only select one image
+      allowsEditing: true, // Allows the user to crop / rotate their photo before uploading it
+      quality: 1,
+      exif: false, // We don't want nor need that data.
+    })
+
+    if (result.canceled || !result.assets || result.assets.length === 0) {
+      console.log('User cancelled image picker.')
+      return
+    }
+*/
+ //   const image = result.assets[0]
+    console.log('Got image', image)
+
+    if (!image.uri) {
+      throw new Error('No image uri!') // Realistically, this should never happen, but just in case...
+    }
+
+    const arraybuffer = await fetch(image.uri).then((res) => res.arrayBuffer())
+
+    const fileExt = image.uri?.split('.').pop()?.toLowerCase() ?? 'jpeg'
+    const path = `${Date.now()}.${fileExt}`
+    const { data, error: uploadError } = await supabase.storage
+      .from('avatars')
+      .upload(path, arraybuffer, {
+        contentType: image.mimeType ?? 'image/jpeg',
       })
 
-    if (error) {
-      console.error('Error uploading image:', error.message);
-    } else {
-      console.log('Image uploaded successfully:', data);
-      // You can save the image URL or any relevant information to your database here
+    if (uploadError) {
+      throw uploadError
     }
+
+    onUpload(data.path)
   } catch (error) {
-    console.error('Error uploading image:', error.message);
-    throw error; // rethrow the error to be caught by the caller
+    if (error instanceof Error) {
+      Alert.alert(error.message)
+    } else {
+      throw error
+    }
+  } finally {
+    setUploading(false)
   }
-};
+}
 
 export default uploadImage;
