@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, Image, Text } from 'react-native';
 import Database from './Database'; // Adjust the path to your Database file
 
-const supabase = Database();
+const supabase = Database;
 
 const bucketName = 'Images';
 
