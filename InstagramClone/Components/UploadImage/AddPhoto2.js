@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Image, View, Platform } from 'react-native';
+import { Button, Image, View, Platform, Alert } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
+import uploadImage from '../network/UploadImage';
 
 export default function ImagePickerExample() {
   const [image, setImage] = useState(null);
@@ -16,21 +17,20 @@ export default function ImagePickerExample() {
 
     console.log(result);
 
-    
     if (!result.canceled) {
-      
       setImage(result.assets[0].uri);
-      uploadSelectedImage(result.assets[0].uri)
+      uploadSelectedImage(result.assets[0].uri);
     }
-    const uploadSelectedImage = async (imageData) => {
-        try {
-          await UploadImage(imageData);
-          Alert.alert('Image Uploaded Successfully');
-        } catch (error) {
-          console.error('Error uploading image:', error.message);
-          Alert.alert('Error uploading image. Please try again.');
-        }
-      };
+  };
+
+  const uploadSelectedImage = async (imageData) => {
+    try {
+      await uploadImage(imageData);
+      Alert.alert('Image Uploaded Successfully');
+    } catch (error) {
+      console.error('Error uploading image:', error.message);
+      Alert.alert('Error uploading image. Please try again.');
+    }
   };
 
   return (

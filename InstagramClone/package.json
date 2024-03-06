@@ -7,7 +7,10 @@
     "@react-navigation/native": "^6.1.10",
     "@react-navigation/native-stack": "^6.9.18",
     "@supabase/supabase-js": "^2.39.7",
+    "base64-arraybuffer": "^1.0.2",
     "expo": "^50.0.1",
+    "expo-file-system": "^16.0.7",
+    "expo-image-picker": "~14.7.1",
     "expo-status-bar": "~1.11.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -22,8 +25,7 @@
     "react-native-screens": "^3.29.0",
     "react-native-tab-view": "^3.5.2",
     "react-native-web": "~0.19.6",
-    "react-navigation": "^5.0.0",
-    "expo-image-picker": "~14.7.1"
+    "react-navigation": "^5.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3"
