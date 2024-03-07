@@ -31,7 +31,7 @@ const convertImageToBuffer = async (imageUri) => {
 };
 
 
-async function uploadImage(image) {
+async function uploadImage(image, mimeType) {
   try {
     /*
     setUploading(true)
@@ -61,24 +61,22 @@ async function uploadImage(image) {
     const fileExt = image.uri?.split('.').pop()?.toLowerCase() ?? 'jpeg'
     const path = `${Date.now()}.${fileExt}`
     const { data, error: uploadError } = await supabase.storage
-      .from('avatars')
+      .from('images')
       .upload(path, arraybuffer, {
-        contentType: image.mimeType ?? 'image/jpeg',
+        contentType: mimeType ?? 'image/jpeg',
       })
 
     if (uploadError) {
       throw uploadError
     }
 
-    onUpload(data.path)
+   // onUpload(data.path)
   } catch (error) {
     if (error instanceof Error) {
-      Alert.alert(error.message)
+      console.log(error.message)
     } else {
       throw error
     }
-  } finally {
-    setUploading(false)
   }
 }
 

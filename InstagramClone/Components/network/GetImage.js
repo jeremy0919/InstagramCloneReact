@@ -4,7 +4,7 @@ import Database from './Database'; // Adjust the path to your Database file
 
 const supabase = Database;
 
-const bucketName = 'Images';
+const bucketName = 'images';
 
 const ImageComponent = (fileName) => {
   const [imageUrl, setImageUrl] = useState(null);

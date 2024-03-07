@@ -25,7 +25,8 @@ export default function ImagePickerExample() {
 
   const uploadSelectedImage = async (imageData) => {
     try {
-      await uploadImage(imageData);
+      const mimeType = imageData.type;
+      await uploadImage(imageData, mimeType); 
       Alert.alert('Image Uploaded Successfully');
     } catch (error) {
       console.error('Error uploading image:', error.message);
